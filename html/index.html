@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link id="favicon" rel="shortcut icon" href="../assets/images/shortcut_icon.png">
+    <script src="../js/script.js"></script>
+    <script type="text/javascript" src="../lib/moment-develop/min/moment.min.js"></script>
+    <title>calendar</title>
+</head>
+<body>
+    <h1 class="tittle">calendar</h1>
+    <hr>
+    <h3 class="month" id='month'></h3>
+    <input class="switch" value="<" onclick="clickOnLeft()" type="button">
+    <table class="table" id='calendar' border="1">
+        <thead>
+            <tr>
+                <th>su</th>
+                <th>mo</th>
+                <th>tu</th>
+                <th>we</th>
+                <th>th</th>
+                <th>fr</th>
+                <th>sa</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <input class="switch" value=">" onclick="clickOnRight()" type="button">
+</body>
+</html>

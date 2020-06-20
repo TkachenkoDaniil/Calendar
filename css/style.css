@@ -1,0 +1,7 @@
+.switch, .table{
+    float:left;
+}
+
+.switch {
+    margin-top: 50px;
+}
