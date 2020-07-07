@@ -1,2 +1,2 @@
-# Calendar-visual
+# Calendar
 Creation calendar
