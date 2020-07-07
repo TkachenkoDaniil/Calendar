@@ -1,59 +1,56 @@
-  window.onload = function() {
-    var date = moment([moment().format('YYYY'), (moment().format('M')-1), 1]);
-    moment.locale('en');
-
-    changeMonth(date);
- };
- var newDate;
-
- function calcWeeksInMonth(date) { // подсчет количества недель в месяце
-  const dateFirst = moment(date).date(1)
-  const dateLast = moment(date).date(date.daysInMonth())
-  const startWeek = dateFirst.week()
-  const endWeek = dateLast.week()
-  if (endWeek < startWeek) {
-      return dateFirst.weeksInYear() - startWeek + 1 + endWeek
-  } else {
-      return endWeek - startWeek + 1
-  }
-}
+window.onload = function() {
+  //debugger;
+  let date = new Date();
+  date.setDate(1);
+  changeMonth(date);
+};
+var newDate;
 
 function changeMonth(date) {
-    newDate = date;
-    var year = date.format('YYYY'); //год
-    var month = date.format('MMMM'); // буквунный вариант записи месяца
-    var monthLetter = date.format("M"); // числовой вариант записи месяца
-    //console.log(month);
-    var day = date.format('DD'); // день
-    var dayOfWeek = date.isoWeekday(); // день недели первого дня месяца от 1 до 7 (1 это пн)
-    if(dayOfWeek == 7) {dayOfWeek = 0}
-    //console.log(dayOfWeek);
-    var row = ''
-    var countWeeks = calcWeeksInMonth(date)
-    date.subtract(dayOfWeek, 'days');
-    for(var i = 0; i < countWeeks; i++)
-    {
-      row = '<tr>'
-       for(var k = 0; k < 7; k++)
-       {
-          row += "<td>"+date.format('DD')+"</td>"
-          date = date.add(1, 'day');
-       }
-     row += '</tr>'
-     calendar.getElementsByTagName('tbody')[0].innerHTML += row
+  newDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  let month = date.toLocaleString('ru', {
+    month: 'long'
+  });
+  //debugger;
+  var prevMonthLastDay = new Date(date.getFullYear(), date.getMonth(), 0);
+  let lastDay = new Date(date.getFullYear(),date.getMonth() + 1, 0).getDate();
+  let dayOfWeek = date.getDay();
+  let row = ''
+
+  //if(dayOfWeek == 6) {dayOfWeek = 0}
+  date.setDate(date.getDate() - dayOfWeek);
+  //debugger;
+
+  row += '<tr>'
+  if (dayOfWeek != 0) {
+    for(let i = date.getDate(); i != prevMonthLastDay.getDate()+1; i++){
+      row += '<td></td>'
+      date.setDate(date.getDate() + 1);
     }
-    document.getElementById('month').innerHTML = month
+  }
+
+  for(let j = date.getDate(); j != lastDay+1; j ++){
+    if(date.getDay() == 0){
+      row += '</tr><tr>'
+    }
+    row += "<td>" + date.getDate() + "</td>";
+    date.setDate(date.getDate() + 1);
+  }
+  row += '</tr>'
+  calendar.getElementsByTagName('tbody')[0].innerHTML += row
+  document.getElementById('month').innerHTML = month
 }
 
 function clickOnLeft(){
-  calendar.getElementsByTagName('tbody')[0].innerHTML = ''
-  let date = newDate.startOf('month');
-  changeMonth(date.subtract(2, 'month'))
+  calendar.getElementsByTagName('tbody')[0].innerHTML = '';
+  let prevMonth = new Date(newDate.getFullYear(), newDate.getMonth()-1, 1);
+  //console.log(prevMonth);
+  changeMonth(prevMonth);
 }
 
 function clickOnRight(){
-  let date = newDate.startOf('month');
-  //console.log(date.format('MMMM'))
-  calendar.getElementsByTagName('tbody')[0].innerHTML = ''
-  changeMonth(newDate.add(0, 'month'))
+  calendar.getElementsByTagName('tbody')[0].innerHTML = '';
+  let nextMonth = new Date(newDate.getFullYear(), newDate.getMonth()+1, 1);
+  //console.log(nextMonth);
+  changeMonth(nextMonth); 
 }

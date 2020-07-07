@@ -1,105 +1,51 @@
-for(var i = 0; i < countWeeks; i++)
-{
-  row = '<tr>'
-  //console.log(dayOfWeek);
-  if((i == 0) && (dayOfWeek != 1)) // пропускаем дни недели до начала месяца
-  {
-    //console.log('1');
-     for(var j = 0; j < dayOfWeek; j++)
-     {
-       //console.log('2');
-       row += '<td></td>'
-     }
-     for(var k = dayOfWeek; k < 7; k++)
-     {
-        //console.log('3');
-        row += "<td>"+date.format('DD')+"</td>"
-        date = date.add(1, 'day');
-     }
-  }
-  else if(i != (countWeeks-1))
-  {
-    //console.log('4');
-    for(var t = 0; t < 7; t++)
-    {
-      //console.log("все ок");
-      row += "<td>"+date.format('DD')+"</td>"
-      date = date.add(1, 'day');
-      //console.log(date.format('DD'));
-    }
-  }
-  else
-  {
-    var count = 0;
-    var l = date.format('DD');
-    do
-    {
-      console.log("s");
-      row += "<td>"+date.format('DD')+"</td>"
-      date = date.add(1, 'day');
-      count ++;
-      l++;
-    }while(l != date.daysInMonth());
-    //console.log("s");
-    //console.log("вsadсе ок");
-    while(count != 7)
-    {
-      console.log("s");
-      row += '<td></td>'
-      count++;
-    }
-  }
-}
 
+// date.setMonth(date.getMonth() + 1);
+// date.setDate(-1);
+//date.setDate(+1);
+// console.log(date.getFullYear());
+// console.log(date.getMonth()+1);
+// console.log(date.getDate()+1);
+// console.log(date.getDay());
 
+ //var date = new Date();
 
+// let monthLetter = temp.toLocaleString('ru', {
+//   month: 'long'
+// });
 
-  for(var i = 0; i < countWeeks; i++)
-    {
-      row = '<tr>'
-      //console.log(dayOfWeek);
-      if((i == 0) && (dayOfWeek != 1)) // пропускаем дни недели до начала месяца
-      {
-        //console.log('1');
-         for(var j = 0; j < dayOfWeek; j++)
-         {
-           //console.log('2');
-           row += '<td></td>'
-         }
-         for(var k = dayOfWeek; k < 7; k++)
-         {
-            //console.log('3');
-            row += "<td>"+date.format('DD')+"</td>"
-            date = date.add(1, 'day');
-         }
-      }
-      else
-      {
-        //console.log('4');
-        for(var t = 0; t < 7; t++)
-        {
-          //console.log();
-          if(date.format('DD') != moment(date).date(date.daysInMonth()))
-          {
-            //console.log("все ок");
-            row += "<td>"+date.format('DD')+"</td>"
-            date = date.add(1, 'day');
-          }
-          else
-          {
-            console.log("вsadсе ок");
-            row += '<td></td>'
-          }
-        }
-      }
-     row += '</tr>'
-     calendar.getElementsByTagName('tbody')[0].innerHTML += row
-    }
+// console.log(monthLetter);
+// temp.setDate(1);
+// console.log(temp);
 
+//console.log(getWeekNum(temp));
 
-    window.onload = function() {
-      var date = moment([moment().format('YYYY'), (moment().format('M')-1), 1]);
-      moment.locale('en');
-  
-      changeMonth(date);
-   };
+// function getWeekNum (date) { //Корректно определяем номер недели в году
+//   let day = date.getDate();
+//   let month = date.getMonth()+1;
+//   let year = date.getFullYear();
+//   //if (calStartDOW == 0) day++; //Чтоб работало и для САЩ :)
+//   month++; //в JS месяцы нумеруются с нуля!
+//   let a = Math.floor((14-month) / 12);
+//   let y = year + 4800 - a;
+//   let m = month + 12 * a - 3;
+//   let J = day + Math.floor((153 * m + 2) / 5) + 365 * y + Math.floor(y/4) - 
+//    Math.floor(y/100) + Math.floor(y/400) - 32045;
+//   d4 = (((J + 31741 - (J % 7)) % 146097) % 36524) % 1461;
+//   let L = Math.floor(d4 / 1460);
+//   let d1 = ((d4 - L) % 365) + L;
+//   let week = Math.floor(d1/7) + 1;
+//   if (week<10) week='0'+week; //Лидирующий ноль для недель 1-9
+//   return week;
+//  }
+
+//console.log(date.getDay());
+
+// date.setDate(date.getDate() + 1);
+// console.log(date);
+
+// var mas = [,2, 3];
+// console.log(mas[0]);
+
+const date = new Date();
+date.setDate(date.getDate() - 5);
+console.log(date);
