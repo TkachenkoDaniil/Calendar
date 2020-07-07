@@ -1,2 +1,2 @@
 # Calendar
-Creation calendar
+Simple calendar developed by html css js
